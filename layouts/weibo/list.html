@@ -2,7 +2,7 @@
   {{ $items := where .Pages "Draft" false }}
   {{ $avatar := resources.Get site.Params.Author.image }}
 
-  <div class="weibo-page">
+  <div class="weibo-page" data-supabase-enabled="{{ site.Params.supabase.enabled | default false }}" data-supabase-url="{{ site.Params.supabase.url }}" data-supabase-anon-key="{{ site.Params.supabase.anonKey }}">
     <header class="weibo-page-header">
       <div>
         <p class="weibo-eyebrow"><span></span> SHORT UPDATES</p>
@@ -39,6 +39,21 @@
               <span>公开可见</span>
             </div>
           </div>
+          <div class="weibo-auth-row" data-weibo-auth-controls hidden>
+            <span class="weibo-auth-status" data-weibo-auth-status>未登录</span>
+            <button type="button" class="weibo-auth-toggle" data-weibo-login-toggle>管理员登录</button>
+            <button type="button" class="weibo-auth-toggle" data-weibo-logout hidden>退出登录</button>
+          </div>
+          <div class="weibo-login-panel" data-weibo-login-panel hidden>
+            <form data-weibo-login-form>
+              <label class="sr-only" for="weibo-email">邮箱</label>
+              <input id="weibo-email" type="email" autocomplete="email" placeholder="管理员邮箱" required>
+              <label class="sr-only" for="weibo-password">密码</label>
+              <input id="weibo-password" type="password" autocomplete="current-password" placeholder="密码" required>
+              <button type="submit">登录</button>
+            </form>
+            <p data-weibo-auth-message></p>
+          </div>
           <form class="weibo-composer-form" data-weibo-composer>
             <label class="sr-only" for="weibo-input">有什么新鲜事想分享？</label>
             <textarea id="weibo-input" maxlength="280" rows="3" placeholder="有什么新鲜事想分享？"></textarea>
@@ -46,7 +61,7 @@
               <div class="weibo-composer-tools" aria-hidden="true"><span>☺</span><span>▧</span><span># 话题</span></div>
               <div class="weibo-composer-actions"><span class="weibo-counter" data-weibo-counter>0 / 280</span><button type="submit">发布</button></div>
             </div>
-            <p class="weibo-composer-help" data-weibo-help hidden>这是一套静态页面。请把内容保存为 <code>content/weibo/日期-标题.md</code>，再构建发布到网站。</p>
+            <p class="weibo-composer-help" data-weibo-help hidden>未配置云端服务。请把内容保存为 <code>content/weibo/日期-标题.md</code>，再构建发布到网站。</p>
           </form>
         </section>
 
@@ -82,20 +97,7 @@
       </div>
     </div>
   </div>
-
-  <script>
-    (() => {
-      const form = document.querySelector('[data-weibo-composer]');
-      const input = document.querySelector('#weibo-input');
-      const counter = document.querySelector('[data-weibo-counter]');
-      const help = document.querySelector('[data-weibo-help]');
-      if (!form || !input || !counter || !help) return;
-      input.addEventListener('input', () => { counter.textContent = `${input.value.length} / 280`; });
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        help.hidden = false;
-        input.blur();
-      });
-    })();
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  {{ $weiboJS := resources.Get "js/weibo.js" | resources.Minify | resources.Fingerprint "sha512" }}
+  <script src="{{ $weiboJS.RelPermalink }}" integrity="{{ $weiboJS.Data.Integrity }}" defer></script>
 {{ end }}

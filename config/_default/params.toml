@@ -48,6 +48,11 @@ fingerprintAlgorithm = "sha512"
   showWordCount = true
   showZenMode = true
 
+[supabase]
+  enabled = true
+  url = "https://zsstqrufzrjhxhjkzqou.supabase.co"
+  anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpzc3RxcnVmenJqaHhoamt6cW91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMjA3ODcsImV4cCI6MjEwNDc5Njc4N30.VTgJFZ1K43gqDMO7yGYQ5OVv51goTHN5RGc0kTFV_BI"
+
 [list]
   showHero = false
   showBreadcrumbs = true

@@ -25,6 +25,23 @@ hugo server -D
 hugo new weibo/今天的想法.md
 ```
 
+## 启用微博云端发布
+
+微博页面支持 Supabase 云端发布，不需要自有服务器。启用步骤：
+
+1. 在 Supabase 创建项目，并在 SQL Editor 执行 `supabase/weibo.sql`。
+2. 在 Authentication 中创建管理员账号，建议关闭公开注册。
+3. 将项目 URL 和 publishable/anon key 填入 `config/_default/params.toml`：
+
+```toml
+[supabase]
+  enabled = true
+  url = "https://你的项目.supabase.co"
+  anonKey = "你的 publishable key"
+```
+
+前端只使用 publishable/anon key；不要把 Supabase service role key 放进仓库或浏览器。配置后重新构建，进入「微博」即可登录并发布，动态会直接保存到云端并刷新信息流。
+
 ## 主题与定制
 
 - 主题配置：`config/_default/params.toml`
