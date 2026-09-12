@@ -1,0 +1,39 @@
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $categories := .Site.Taxonomies.categories }}
+
+<article class="xiaoyao-home">
+  <section class="xiaoyao-hero-card">
+    <div class="xiaoyao-hero-copy">
+      <p class="xiaoyao-eyebrow"><span class="xiaoyao-eyebrow-dot"></span> 技术 · 系统 · 持续学习</p>
+      <h1>{{ .Site.Title }}</h1>
+      <p class="xiaoyao-hero-title">把走过的路，写成可复用的经验。</p>
+      <div class="xiaoyao-hero-description prose dark:prose-invert">{{ .Content }}</div>
+      <div class="xiaoyao-hero-actions">
+        <a class="xiaoyao-button xiaoyao-button-primary" href="{{ "posts/" | relLangURL }}">浏览文章 <span>↗</span></a>
+        <a class="xiaoyao-button xiaoyao-button-secondary" href="{{ "about/" | relLangURL }}">了解我</a>
+      </div>
+    </div>
+
+    <aside class="xiaoyao-profile-card">
+      <div class="xiaoyao-profile-topline">
+        <span>ABOUT THE AUTHOR</span>
+        <span class="xiaoyao-status"><i></i> ONLINE</span>
+      </div>
+      {{ with .Site.Params.Author.image }}
+        {{ $avatar := resources.Get . }}
+        {{ if $avatar }}<img class="xiaoyao-avatar" src="{{ $avatar.RelPermalink }}" alt="{{ $.Site.Params.Author.name }}" />{{ end }}
+      {{ end }}
+      <h2>{{ .Site.Params.Author.name }}</h2>
+      <p class="xiaoyao-profile-headline">{{ .Site.Params.Author.headline }}</p>
+      <p class="xiaoyao-profile-bio">{{ .Site.Params.Author.bio }}</p>
+      <div class="xiaoyao-profile-links">{{ partial "author-links.html" . }}</div>
+    </aside>
+  </section>
+
+  <section class="xiaoyao-metrics" aria-label="站点概览">
+    <div class="xiaoyao-metric"><strong>{{ len $posts }}</strong><span>篇文章</span></div>
+    <div class="xiaoyao-metric"><strong>{{ len $categories }}</strong><span>个分类</span></div>
+    <div class="xiaoyao-metric"><strong>2018</strong><span>开始记录</span></div>
+    <div class="xiaoyao-metric xiaoyao-metric-wide"><strong>HUGO</strong><span>驱动本站</span></div>
+  </section>
+</article>

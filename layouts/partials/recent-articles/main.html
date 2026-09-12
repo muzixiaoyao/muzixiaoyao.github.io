@@ -1,0 +1,20 @@
+{{ if .Site.Params.homepage.showRecent | default false }}
+  <section class="xiaoyao-recent-section">
+    <div class="xiaoyao-section-heading">
+      <div>
+        <p class="xiaoyao-section-kicker">RECENT NOTES</p>
+        <h2>最近文章</h2>
+      </div>
+      {{ with .Site.Params.homepage.showMoreLinkDest }}
+        <a class="xiaoyao-section-link" href="{{ . | relLangURL }}">查看全部 <span>→</span></a>
+      {{ end }}
+    </div>
+    {{ if and .Site.Params.homepage.cardView (not .Site.Params.homepage.cardViewScreenWidth) | default false }}
+      {{ partial "recent-articles/cardview.html" . }}
+    {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
+      {{ partial "recent-articles/cardview-fullwidth.html" . }}
+    {{ else }}
+      {{ partial "recent-articles/list.html" . }}
+    {{ end }}
+  </section>
+{{ end }}
