@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="木子逍遥头像">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="72" fill="#0f172a"/>
+  <circle cx="128" cy="116" r="66" fill="url(#g)"/>
+  <path d="M74 201c13-28 31-42 54-42s41 14 54 42" fill="none" stroke="#e0f2fe" stroke-width="17" stroke-linecap="round"/>
+  <circle cx="104" cy="111" r="9" fill="#e0f2fe"/>
+  <circle cx="152" cy="111" r="9" fill="#e0f2fe"/>
+  <path d="M105 137c14 10 32 10 46 0" fill="none" stroke="#e0f2fe" stroke-width="8" stroke-linecap="round"/>
+</svg>

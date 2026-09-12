@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <header class="mt-5">
+    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="mt-2 text-base text-neutral-500 dark:text-neutral-400">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ range $posts.GroupByDate "2006" }}
+    <section class="mt-12">
+      <h2 class="mb-4 text-2xl font-bold text-neutral-700 dark:text-neutral-300">{{ .Key }}</h2>
+      <div class="space-y-3">
+        {{ range .Pages }}
+          <a class="archive-item flex items-center justify-between gap-4 rounded-xl border border-neutral-200 bg-white/60 px-4 py-3 transition hover:-translate-y-0.5 hover:border-primary-400 hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-800/60" href="{{ .RelPermalink }}">
+            <span class="font-medium text-neutral-800 dark:text-neutral-100">{{ .Title }}</span>
+            <time class="shrink-0 text-sm text-neutral-500 dark:text-neutral-400" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+          </a>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

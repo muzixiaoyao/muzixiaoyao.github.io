@@ -1,0 +1,44 @@
+[[main]]
+  name = "首页"
+  pageRef = "/"
+  weight = 10
+
+[[main]]
+  name = "文章"
+  pageRef = "posts"
+  weight = 20
+
+[[main]]
+  name = "归档"
+  pageRef = "archives"
+  weight = 30
+
+[[main]]
+  name = "分类"
+  pageRef = "categories"
+  weight = 40
+
+[[main]]
+  name = "标签"
+  pageRef = "tags"
+  weight = 50
+
+[[main]]
+  name = "关于"
+  pageRef = "about"
+  weight = 60
+
+[[main]]
+  name = "收藏"
+  pageRef = "collection"
+  weight = 70
+
+[[footer]]
+  name = "GitHub"
+  url = "https://github.com/muzixiaoyao"
+  weight = 10
+
+[[footer]]
+  name = "RSS"
+  url = "/index.xml"
+  weight = 20

@@ -1,0 +1,98 @@
+:root {
+  --xiaoyao-accent: #0f766e;
+  --xiaoyao-accent-strong: #0e7490;
+  --xiaoyao-ink: #0f172a;
+  --xiaoyao-glow: rgba(20, 184, 166, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(45, 212, 191, 0.12), transparent 30rem),
+    radial-gradient(circle at 92% 12%, rgba(96, 165, 250, 0.12), transparent 28rem);
+}
+
+header {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background-color: color-mix(in srgb, var(--color-neutral-50) 78%, transparent) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-300) 45%, transparent);
+}
+
+.dark header {
+  background-color: color-mix(in srgb, var(--color-neutral-900) 76%, transparent) !important;
+  border-bottom-color: color-mix(in srgb, var(--color-neutral-700) 55%, transparent);
+}
+
+main {
+  position: relative;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: -1.5rem;
+  width: 0.35rem;
+  height: 5rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #14b8a6, #2563eb);
+  opacity: 0.9;
+}
+
+.prose a,
+a:hover {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.article-link--card,
+.article-link--simple,
+.article-link--related {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  border: 1px solid color-mix(in srgb, var(--color-neutral-300) 55%, transparent);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.article-link--card:hover,
+.article-link--simple:hover,
+.article-link--related:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--xiaoyao-accent) 50%, transparent);
+  box-shadow: 0 18px 40px var(--xiaoyao-glow);
+}
+
+.dark .article-link--card,
+.dark .article-link--simple,
+.dark .article-link--related {
+  border-color: color-mix(in srgb, var(--color-neutral-700) 60%, transparent);
+  box-shadow: none;
+}
+
+.dark .article-link--card:hover,
+.dark .article-link--simple:hover,
+.dark .article-link--related:hover {
+  border-color: color-mix(in srgb, #2dd4bf 55%, transparent);
+}
+
+.prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+  border-left-color: var(--xiaoyao-accent);
+  background: var(--xiaoyao-glow);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.8rem 1rem;
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  border-radius: 0.35rem;
+  padding: 0.12rem 0.35rem;
+}
+
+@media (max-width: 640px) {
+  main::before {
+    left: -0.5rem;
+    height: 3.5rem;
+  }
+}
