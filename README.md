@@ -19,6 +19,12 @@ hugo server -D
 
 文章放在 `content/posts/`，草稿放在 `content/drafts/`；发布草稿时使用 `hugo -D`。
 
+微博动态放在 `content/weibo/`，每个 Markdown 文件就是一条动态。可以用下面的命令创建新动态：
+
+```bash
+hugo new weibo/今天的想法.md
+```
+
 ## 主题与定制
 
 - 主题配置：`config/_default/params.toml`

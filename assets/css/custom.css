@@ -123,6 +123,97 @@ main::before { display: none; }
 .dark .article-link--card, .dark .article-link--simple, .dark .article-link--related { background: rgba(15, 23, 42, 0.64) !important; box-shadow: none !important; }
 .dark .article-link--card:hover, .dark .article-link--simple:hover, .dark .article-link--related:hover { border-color: rgba(103, 232, 249, 0.4) !important; box-shadow: 0 14px 34px rgba(2, 6, 23, 0.28) !important; }
 
+/* Weibo-style short updates */
+.weibo-page { max-width: 72rem; margin: 0 auto; }
+.weibo-page-header { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin: 0 0 2rem; padding: 0 !important; border: 0 !important; background: transparent !important; }
+.weibo-eyebrow { display: flex; align-items: center; gap: 0.55rem; margin: 0 0 0.7rem; color: #0891b2; font-size: 0.7rem; font-weight: 850; letter-spacing: 0.16em; }
+.weibo-eyebrow span { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #06b6d4; box-shadow: 0 0 0 5px rgba(6, 182, 212, 0.12); }
+.weibo-page-header h1 { margin: 0; color: #172033; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.06em; }
+.weibo-page-header p:last-child { max-width: 34rem; margin: 0.6rem 0 0; color: #64748b; font-size: 0.95rem; }
+.weibo-page-badge { flex: none; padding: 0.45rem 0.75rem; border: 1px solid rgba(37, 99, 235, 0.16); border-radius: 999px; color: #2563eb; background: rgba(255, 255, 255, 0.62); font-size: 0.75rem; font-weight: 750; }
+.weibo-layout { display: grid; grid-template-columns: minmax(180px, 0.32fr) minmax(0, 0.9fr); gap: 1.25rem; align-items: start; }
+.weibo-aside { position: sticky; top: 6.5rem; display: grid; gap: 0.8rem; }
+.weibo-aside-card, .weibo-publish-tip, .weibo-post { border: 1px solid var(--xiaoyao-border); background: rgba(255, 255, 255, 0.72); box-shadow: 0 12px 34px rgba(30, 64, 175, 0.05); }
+.weibo-aside-card { padding: 1.2rem; border-radius: 1rem; text-align: center; }
+.weibo-aside-avatar { width: 4.5rem; height: 4.5rem; margin: 0 auto 0.75rem; border: 3px solid white; border-radius: 1.25rem; box-shadow: 0 8px 20px rgba(30, 64, 175, 0.14); }
+.weibo-aside-card h2 { margin: 0; color: #172033; font-size: 1.05rem; font-weight: 850; }
+.weibo-aside-card > p { margin: 0.3rem 0 0; color: #2563eb; font-size: 0.76rem; font-weight: 700; }
+.weibo-aside-rule { height: 1px; margin: 1rem 0; background: var(--xiaoyao-border); }
+.weibo-aside-card .weibo-aside-note { color: #64748b; font-size: 0.78rem; font-weight: 400; line-height: 1.7; }
+.weibo-publish-tip { display: flex; gap: 0.65rem; padding: 0.9rem; border-radius: 0.9rem; }
+.weibo-tip-icon { display: grid; place-items: center; flex: none; width: 1.5rem; height: 1.5rem; border-radius: 0.5rem; color: white; background: linear-gradient(135deg, #2563eb, #06b6d4); font-size: 1.15rem; line-height: 1; }
+.weibo-publish-tip strong { color: #334155; font-size: 0.78rem; }
+.weibo-publish-tip p { margin: 0.2rem 0 0; color: #94a3b8; font-size: 0.7rem; line-height: 1.6; }
+.weibo-publish-tip code { font-size: 0.66rem; }
+.weibo-main-column { display: grid; gap: 1rem; min-width: 0; }
+.weibo-composer { padding: 1.2rem 1.35rem 1rem; border: 1px solid rgba(37, 99, 235, 0.22); border-radius: 1.15rem; background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(239, 246, 255, 0.82)); box-shadow: 0 12px 34px rgba(37, 99, 235, 0.08); }
+.weibo-composer-head { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.8rem; }
+.weibo-composer-avatar { width: 2.7rem; height: 2.7rem; border-radius: 0.8rem; }
+.weibo-composer-head div { display: grid; gap: 0.12rem; }
+.weibo-composer-head strong { color: #1e3a8a; font-size: 0.88rem; }
+.weibo-composer-head span { color: #94a3b8; font-size: 0.68rem; }
+.weibo-composer-form textarea { display: block; width: 100%; min-height: 5.6rem; resize: vertical; padding: 0.95rem 1rem; border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 0.8rem; outline: none; color: #334155; background: rgba(255, 255, 255, 0.82); font: inherit; font-size: 0.92rem; line-height: 1.7; transition: border-color 160ms ease, box-shadow 160ms ease; }
+.weibo-composer-form textarea::placeholder { color: #a8b4c5; }
+.weibo-composer-form textarea:focus { border-color: rgba(37, 99, 235, 0.55); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+.weibo-composer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding-top: 0.7rem; }
+.weibo-composer-tools, .weibo-composer-actions { display: flex; align-items: center; gap: 0.75rem; }
+.weibo-composer-tools { color: #06b6d4; font-size: 0.76rem; font-weight: 700; }
+.weibo-composer-tools span { display: inline-flex; align-items: center; gap: 0.2rem; }
+.weibo-counter { color: #94a3b8; font-size: 0.68rem; }
+.weibo-composer-actions button { min-width: 4rem; padding: 0.48rem 0.9rem; border: 0; border-radius: 999px; color: white; background: linear-gradient(135deg, #2563eb, #0891b2); font: inherit; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: transform 160ms ease, box-shadow 160ms ease; }
+.weibo-composer-actions button:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(37, 99, 235, 0.24); }
+.weibo-composer-help { margin: 0.75rem 0 0; padding: 0.65rem 0.8rem; border-radius: 0.6rem; color: #64748b; background: rgba(224, 242, 254, 0.65); font-size: 0.72rem; line-height: 1.6; }
+.weibo-composer-help[hidden] { display: none; }
+.weibo-composer-help code { color: #1d4ed8; font-size: 0.68rem; }
+.weibo-feed { display: grid; gap: 1rem; }
+.weibo-post { padding: 1.25rem 1.35rem; border-radius: 1.15rem; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.weibo-post:hover { transform: translateY(-2px); border-color: rgba(37, 99, 235, 0.32); box-shadow: 0 18px 42px rgba(37, 99, 235, 0.1); }
+.weibo-post-head { display: flex; align-items: center; gap: 0.7rem; }
+.weibo-post-avatar { width: 2.7rem; height: 2.7rem; border-radius: 0.8rem; }
+.weibo-post-author { display: grid; gap: 0.15rem; min-width: 0; }
+.weibo-post-author strong { color: #1e3a8a; font-size: 0.88rem; }
+.weibo-post-author time { color: #94a3b8; font-size: 0.7rem; }
+.weibo-post-link { margin-left: auto; color: #94a3b8 !important; font-size: 1rem; letter-spacing: 0.15em; text-decoration: none !important; }
+.weibo-post-link:hover { color: #2563eb !important; }
+.weibo-post-content { margin: 1rem 0 0; color: #334155; font-size: 0.98rem; line-height: 1.9; }
+.weibo-post-content p:first-child { margin-top: 0; }
+.weibo-post-content p:last-child { margin-bottom: 0; }
+.weibo-post-content h1, .weibo-post-content h2, .weibo-post-content h3 { margin-top: 1.2rem; font-size: 1rem; }
+.weibo-post-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid rgba(148, 163, 184, 0.16); color: #94a3b8; font-size: 0.7rem; }
+.weibo-post-footer a { color: #0891b2 !important; text-decoration: none !important; }
+.weibo-post-footer .weibo-share { margin-left: auto; color: #64748b !important; }
+.weibo-post-footer .weibo-share:hover { color: #2563eb !important; }
+.weibo-empty { padding: 3rem 1rem; border: 1px dashed rgba(37, 99, 235, 0.25); border-radius: 1rem; color: #94a3b8; text-align: center; }
+.dark .weibo-page-header h1, .dark .weibo-aside-card h2 { color: #f8fafc; }
+.dark .weibo-page-header p:last-child, .dark .weibo-aside-card .weibo-aside-note { color: #94a3b8; }
+.dark .weibo-page-badge { border-color: rgba(103, 232, 249, 0.18); color: #67e8f9; background: rgba(15, 23, 42, 0.56); }
+.dark .weibo-aside-card, .dark .weibo-publish-tip, .dark .weibo-post { border-color: rgba(100, 116, 139, 0.24); background: rgba(15, 23, 42, 0.7); box-shadow: none; }
+.dark .weibo-aside-avatar { border-color: #1e293b; }
+.dark .weibo-publish-tip strong, .dark .weibo-post-content { color: #dbeafe; }
+.dark .weibo-post-author strong { color: #bae6fd; }
+.dark .weibo-post:hover { border-color: rgba(103, 232, 249, 0.36); box-shadow: 0 16px 36px rgba(2, 6, 23, 0.28); }
+.dark .weibo-composer { border-color: rgba(56, 189, 248, 0.2); background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 39, 64, 0.85)); box-shadow: none; }
+.dark .weibo-composer-head strong { color: #bae6fd; }
+.dark .weibo-composer-form textarea { border-color: rgba(100, 116, 139, 0.3); color: #dbeafe; background: rgba(2, 6, 23, 0.38); }
+.dark .weibo-composer-form textarea:focus { border-color: rgba(103, 232, 249, 0.55); box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1); }
+.dark .weibo-composer-help { color: #94a3b8; background: rgba(8, 47, 73, 0.5); }
+.dark .weibo-composer-help code { color: #67e8f9; }
+
+@media (max-width: 800px) {
+  .weibo-layout { grid-template-columns: 1fr; }
+  .weibo-aside { position: static; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+}
+
+@media (max-width: 640px) {
+  .weibo-page-header { align-items: start; flex-direction: column; }
+  .weibo-aside { grid-template-columns: 1fr; }
+  .weibo-post { padding: 1rem; }
+  .weibo-post-footer .weibo-share { width: 100%; margin-left: 0; }
+  .weibo-composer { padding: 1rem; }
+  .weibo-composer-bottom { align-items: flex-end; flex-direction: column; }
+  .weibo-composer-tools, .weibo-composer-actions { width: 100%; justify-content: space-between; }
+}
+
 @media (max-width: 800px) {
   .xiaoyao-hero-card { grid-template-columns: 1fr; padding: 2rem; border-radius: 1.35rem; }
   .xiaoyao-profile-card { max-width: 30rem; width: 100%; }

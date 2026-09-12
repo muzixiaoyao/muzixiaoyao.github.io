@@ -1,0 +1,101 @@
+{{ define "main" }}
+  {{ $items := where .Pages "Draft" false }}
+  {{ $avatar := resources.Get site.Params.Author.image }}
+
+  <div class="weibo-page">
+    <header class="weibo-page-header">
+      <div>
+        <p class="weibo-eyebrow"><span></span> SHORT UPDATES</p>
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Description }}</p>
+      </div>
+      <div class="weibo-page-badge">{{ len $items }} 条动态</div>
+    </header>
+
+    <div class="weibo-layout">
+      <aside class="weibo-aside">
+        <div class="weibo-aside-card">
+          {{ if $avatar }}<img src="{{ $avatar.RelPermalink }}" alt="{{ site.Params.Author.name }}" class="weibo-aside-avatar">{{ end }}
+          <h2>{{ site.Params.Author.name }}</h2>
+          <p>{{ site.Params.Author.headline }}</p>
+          <div class="weibo-aside-rule"></div>
+          <p class="weibo-aside-note">这里是轻量记录区。想到什么，就留下一条。</p>
+        </div>
+        <div class="weibo-publish-tip">
+          <span class="weibo-tip-icon">＋</span>
+          <div>
+            <strong>想发布一条？</strong>
+            <p>在 <code>content/weibo/</code> 新建一个 Markdown 文件即可。</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="weibo-main-column">
+        <section class="weibo-composer" aria-label="发布微博">
+          <div class="weibo-composer-head">
+            {{ if $avatar }}<img src="{{ $avatar.RelPermalink }}" alt="{{ site.Params.Author.name }}" class="weibo-composer-avatar">{{ end }}
+            <div>
+              <strong>发布一条动态</strong>
+              <span>公开可见</span>
+            </div>
+          </div>
+          <form class="weibo-composer-form" data-weibo-composer>
+            <label class="sr-only" for="weibo-input">有什么新鲜事想分享？</label>
+            <textarea id="weibo-input" maxlength="280" rows="3" placeholder="有什么新鲜事想分享？"></textarea>
+            <div class="weibo-composer-bottom">
+              <div class="weibo-composer-tools" aria-hidden="true"><span>☺</span><span>▧</span><span># 话题</span></div>
+              <div class="weibo-composer-actions"><span class="weibo-counter" data-weibo-counter>0 / 280</span><button type="submit">发布</button></div>
+            </div>
+            <p class="weibo-composer-help" data-weibo-help hidden>这是一套静态页面。请把内容保存为 <code>content/weibo/日期-标题.md</code>，再构建发布到网站。</p>
+          </form>
+        </section>
+
+        <section class="weibo-feed" aria-label="微博动态">
+          {{ if gt (len $items) 0 }}
+            {{ range $items.ByDate.Reverse }}
+              <article class="weibo-post" id="{{ .File.UniqueID }}">
+                <div class="weibo-post-head">
+                  {{ if $avatar }}<img src="{{ $avatar.RelPermalink }}" alt="{{ site.Params.Author.name }}" class="weibo-post-avatar">{{ end }}
+                  <div class="weibo-post-author">
+                    <strong>{{ site.Params.Author.name }}</strong>
+                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日 15:04" }}</time>
+                  </div>
+                  <a class="weibo-post-link" href="{{ .RelPermalink }}" aria-label="查看这条动态">···</a>
+                </div>
+
+                <div class="weibo-post-content prose dark:prose-invert">{{ .Content }}</div>
+
+                <footer class="weibo-post-footer">
+                  {{ with .Params.mood }}<span>◌ {{ . }}</span>{{ end }}
+                  {{ with .Params.location }}<span>⌖ {{ . }}</span>{{ end }}
+                  {{ with .Params.tags }}
+                    {{ range . }}<a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}">#{{ . }}</a>{{ end }}
+                  {{ end }}
+                  <a class="weibo-share" href="{{ .RelPermalink }}">查看原文 ↗</a>
+                </footer>
+              </article>
+            {{ end }}
+          {{ else }}
+            <div class="weibo-empty">还没有动态，写下第一条吧。</div>
+          {{ end }}
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const form = document.querySelector('[data-weibo-composer]');
+      const input = document.querySelector('#weibo-input');
+      const counter = document.querySelector('[data-weibo-counter]');
+      const help = document.querySelector('[data-weibo-help]');
+      if (!form || !input || !counter || !help) return;
+      input.addEventListener('input', () => { counter.textContent = `${input.value.length} / 280`; });
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        help.hidden = false;
+        input.blur();
+      });
+    })();
+  </script>
+{{ end }}

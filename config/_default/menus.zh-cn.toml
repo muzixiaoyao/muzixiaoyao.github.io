@@ -9,6 +9,11 @@
   weight = 20
 
 [[main]]
+  name = "微博"
+  pageRef = "weibo"
+  weight = 25
+
+[[main]]
   name = "归档"
   pageRef = "archives"
   weight = 30
