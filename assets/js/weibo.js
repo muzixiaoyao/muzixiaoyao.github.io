@@ -64,6 +64,29 @@
     if (item.mood) footer.append(makeElement("span", "", `◌ ${item.mood}`));
     if (item.location) footer.append(makeElement("span", "", `⌖ ${item.location}`));
     (item.tags || []).forEach((tag) => footer.append(makeElement("span", "weibo-live-tag", `#${tag}`)));
+    if (session && item.author_id === session.user.id) {
+      const deleteButton = makeElement("button", "weibo-delete-button", "删除");
+      deleteButton.type = "button";
+      deleteButton.addEventListener("click", async () => {
+        if (!window.confirm("确定删除这条动态吗？删除后无法恢复。")) return;
+        deleteButton.disabled = true;
+        deleteButton.textContent = "删除中";
+        const { error } = await client.from("weibo_posts")
+          .delete()
+          .eq("id", item.id)
+          .eq("author_id", session.user.id);
+        if (error) {
+          deleteButton.disabled = false;
+          deleteButton.textContent = "删除";
+          setMessage(`删除失败：${error.message}`, true);
+          return;
+        }
+        article.remove();
+        setMessage("动态已删除");
+        if (!feed.querySelector(".weibo-live-post")) showEmptyFeed();
+      });
+      footer.append(deleteButton);
+    }
     article.append(footer);
     return article;
   };
@@ -75,7 +98,7 @@
   const loadPosts = async () => {
     if (!client) return;
     const { data, error } = await client.from("weibo_posts")
-      .select("id, content, mood, location, tags, created_at")
+      .select("id, author_id, content, mood, location, tags, created_at")
       .order("created_at", { ascending: false })
       .limit(50);
     if (error) {
@@ -115,7 +138,10 @@
   updateAuthUI(null);
   loadPosts();
 
-  client.auth.getSession().then(({ data }) => updateAuthUI(data.session));
+  client.auth.getSession().then(({ data }) => {
+    updateAuthUI(data.session);
+    loadPosts();
+  });
   client.auth.onAuthStateChange((_event, nextSession) => {
     updateAuthUI(nextSession);
     loadPosts();

@@ -183,6 +183,9 @@ main::before { display: none; }
 .weibo-post-footer a { color: #0891b2 !important; text-decoration: none !important; }
 .weibo-post-footer .weibo-share { margin-left: auto; color: #64748b !important; }
 .weibo-post-footer .weibo-share:hover { color: #2563eb !important; }
+.weibo-delete-button { margin-left: auto; padding: 0; border: 0; color: #94a3b8; background: transparent; font: inherit; font-size: 0.7rem; cursor: pointer; }
+.weibo-delete-button:hover { color: #dc2626; }
+.weibo-delete-button:disabled { cursor: wait; opacity: 0.55; }
 .weibo-empty { padding: 3rem 1rem; border: 1px dashed rgba(37, 99, 235, 0.25); border-radius: 1rem; color: #94a3b8; text-align: center; }
 .dark .weibo-page-header h1, .dark .weibo-aside-card h2 { color: #f8fafc; }
 .dark .weibo-page-header p:last-child, .dark .weibo-aside-card .weibo-aside-note { color: #94a3b8; }
@@ -192,6 +195,7 @@ main::before { display: none; }
 .dark .weibo-publish-tip strong, .dark .weibo-post-content { color: #dbeafe; }
 .dark .weibo-post-author strong { color: #bae6fd; }
 .dark .weibo-post:hover { border-color: rgba(103, 232, 249, 0.36); box-shadow: 0 16px 36px rgba(2, 6, 23, 0.28); }
+.dark .weibo-delete-button:hover { color: #fca5a5; }
 .dark .weibo-composer { border-color: rgba(56, 189, 248, 0.2); background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 39, 64, 0.85)); box-shadow: none; }
 .dark .weibo-composer-head strong { color: #bae6fd; }
 .dark .weibo-composer-form textarea { border-color: rgba(100, 116, 139, 0.3); color: #dbeafe; background: rgba(2, 6, 23, 0.38); }
