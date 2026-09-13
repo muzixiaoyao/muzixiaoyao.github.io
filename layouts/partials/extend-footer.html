@@ -1,0 +1,2 @@
+{{ $live2d := resources.Get "js/live2d-widget.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="module" src="{{ $live2d.RelPermalink }}" integrity="{{ $live2d.Data.Integrity }}"></script>
