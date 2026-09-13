@@ -1,6 +1,6 @@
 (() => {
   const resourcePath = 'https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.1/dist/';
-  const modelPath = 'https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/';
+  const tipsPath = `${window.location.origin}/live2d/waifu-tips.json`;
 
   const loadResource = (url, type) => new Promise((resolve, reject) => {
     const element = document.createElement(type === 'css' ? 'link' : 'script');
@@ -28,17 +28,18 @@
 
       if (typeof window.initWidget !== 'function') return;
 
-      if (!localStorage.getItem('modelId')) localStorage.setItem('modelId', '5');
-      if (!localStorage.getItem('modelTexturesId')) localStorage.setItem('modelTexturesId', '18');
+      if (localStorage.getItem('live2d-config-version') !== 'platelet-1') {
+        localStorage.setItem('modelId', '0');
+        localStorage.setItem('modelTexturesId', '0');
+        localStorage.setItem('live2d-config-version', 'platelet-1');
+      }
 
       window.initWidget({
-        waifuPath: `${resourcePath}waifu-tips.json`,
-        cdnPath: modelPath,
+        waifuPath: tipsPath,
         cubism2Path: `${resourcePath}live2d.min.js`,
         cubism5Path: 'https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js',
-        modelId: 5,
-        modelTexturesId: 18,
-        tools: ['hitokoto', 'switch-model', 'photo', 'info', 'quit'],
+        modelId: 0,
+        tools: ['hitokoto', 'photo', 'info', 'quit'],
         logLevel: 'warn',
         drag: false,
         showToggleAfterQuit: true

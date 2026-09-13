@@ -1,0 +1,55 @@
+{
+  "mouseover": [
+    {
+      "selector": "header nav a",
+      "text": ["去看看这个栏目吧～", "这里有新的内容等着你发现。"]
+    },
+    {
+      "selector": ".xiaoyao-hero-card h1",
+      "text": ["这里是木子逍遥的博客～", "欢迎来逛逛，记得常回来看看。"]
+    },
+    {
+      "selector": ".article-link--card",
+      "text": ["要打开这篇文章看看吗？", "知识点已经整理好啦。"]
+    },
+    {
+      "selector": ".weibo-composer-form textarea",
+      "text": ["有什么想说的吗？", "写下今天的想法吧～"]
+    }
+  ],
+  "click": [
+    {
+      "selector": "#site-footer a",
+      "text": ["感谢你的访问，下次再见～", "一起持续记录和成长吧。"]
+    }
+  ],
+  "seasons": [],
+  "time": [
+    {
+      "hour": "0-23",
+      "text": "欢迎来到木子逍遥的博客～"
+    }
+  ],
+  "message": {
+    "default": ["嗨～欢迎来逛逛！", "今天也要保持好心情呀～", "记得偶尔起来走动一下哦。"],
+    "console": "被你发现我的小秘密啦～",
+    "copy": "转载记得注明出处哦～",
+    "visibilitychange": "欢迎回来～",
+    "changeSuccess": "换好啦，好看吗？",
+    "changeFail": "暂时没有其他装扮呢～",
+    "photo": "拍好了吗？",
+    "goodbye": "下次见，祝你今天顺利！",
+    "hitokoto": "这句一言来自 <span>「$1」</span>，是 <span>$2</span> 投稿的。",
+    "welcome": "欢迎阅读<span>「$1」</span>",
+    "referrer": "欢迎来自 <span>$1</span> 的朋友～",
+    "hoverBody": ["要和我打招呼吗？", "今天也一起加油吧～", "有什么新发现吗？"],
+    "tapBody": ["哎呀，被你发现啦！", "要一起学习吗？", "轻轻点一下就好啦～"]
+  },
+  "models": [
+    {
+      "name": "platelet",
+      "paths": ["https://cdn.jsdelivr.net/npm/live2d-widget-model-platelet@1.1.0/assets/platelet.model.json"],
+      "message": "来自《工作细胞》的血小板～"
+    }
+  ]
+}
