@@ -1,4 +1,4 @@
-baseURL = "https://gitblog.xiaoyaozone.com/"
+baseURL = "https://blog.xiaoyaozone.com/"
 defaultContentLanguage = "zh-cn"
 title = "逍遥域"
 theme = "blowfish"
