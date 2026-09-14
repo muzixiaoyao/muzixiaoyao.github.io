@@ -1,2 +1,4 @@
+{{ $live2dRuntime := resources.GetRemote "https://unpkg.com/l2d-widget@0.1.2/dist/index.min.js" | resources.Fingerprint "sha512" }}
+<script src="{{ $live2dRuntime.RelPermalink }}" integrity="{{ $live2dRuntime.Data.Integrity }}"></script>
 {{ $live2d := resources.Get "js/live2d-widget.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="module" src="{{ $live2d.RelPermalink }}" integrity="{{ $live2d.Data.Integrity }}"></script>

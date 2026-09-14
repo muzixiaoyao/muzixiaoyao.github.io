@@ -1,14 +1,5 @@
 (() => {
-  const widgetPath = 'https://unpkg.com/l2d-widget@0.1.2/dist/index.min.js';
   const modelPath = 'https://cdn.jsdelivr.net/npm/live2d-widget-model-platelet@1.1.0/assets/platelet.model.json';
-
-  const loadWidget = () => new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = widgetPath;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
 
   const boot = async () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -16,7 +7,6 @@
     if (document.getElementById('l2d-widget')) return;
 
     try {
-      await loadWidget();
       const createWidget = window.L2D_WIDGET?.createWidget;
       if (typeof createWidget !== 'function') return;
 
