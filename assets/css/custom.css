@@ -45,8 +45,13 @@ header .main-menu nav a { border-radius: 0.55rem; padding: 0.35rem 0.45rem; tran
 header .main-menu nav a:hover { background: rgba(37, 99, 235, 0.08); color: #1d4ed8; }
 .dark header .main-menu > a.text-base { color: #f8fafc; }
 .dark header .main-menu nav a:hover { background: rgba(56, 189, 248, 0.1); color: #67e8f9; }
-/* Blowfish's fixed header reserves 148px by default; keep the nav airy without the oversized top gap. */
-header > .min-h-\[148px\] { min-height: 5.25rem !important; }
+/* Blowfish's fixed header reserves 148px by default; keep the nav compact and centered. */
+header > .min-h-\[148px\] { min-height: 3.5rem !important; height: 3.5rem; }
+header > div.fixed { background: rgba(247, 248, 251, 0.92); border-bottom: 1px solid var(--xiaoyao-border); box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035); }
+header > div.fixed > div.relative { min-height: 3.5rem; }
+header .main-menu { min-height: 3.5rem; padding-top: 0.25rem; padding-bottom: 0.25rem; }
+header .main-menu nav { height: 3rem; }
+.dark header > div.fixed { background: rgba(11, 17, 32, 0.92); border-bottom-color: rgba(100, 116, 139, 0.24); box-shadow: 0 4px 18px rgba(2, 6, 23, 0.18); }
 
 main { position: relative; }
 main::before { display: none; }
