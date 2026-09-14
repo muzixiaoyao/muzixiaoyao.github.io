@@ -24,30 +24,29 @@ body {
 }
 
 header {
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  background-color: rgba(247, 248, 251, 0.88) !important;
+  background-color: #f7f8fb !important;
   border-bottom: 1px solid var(--xiaoyao-border);
 }
 
 .dark header {
-  background-color: rgba(11, 17, 32, 0.88) !important;
+  background-color: #0b1120 !important;
   border-bottom-color: rgba(100, 116, 139, 0.25);
 }
 
-header .main-menu { min-height: 3.5rem; }
+header .main-menu { min-height: 3.5rem; height: 3.5rem; gap: 1rem; padding: 0; }
 header .main-menu > a.text-base { color: #172033; font-weight: 800; letter-spacing: -0.03em; }
-header .main-menu nav a { border-radius: 0.55rem; padding: 0.35rem 0.45rem; transition: color 160ms ease, background 160ms ease; }
-header .main-menu nav a:hover { background: rgba(37, 99, 235, 0.08); color: #1d4ed8; }
+header .main-menu nav { height: 3.5rem; column-gap: 1.1rem; }
+header .main-menu nav a { border-radius: 0.35rem; padding: 0.35rem 0.2rem; color: #64748b; transition: color 160ms ease, background 160ms ease; }
+header .main-menu nav a:hover { background: transparent; color: var(--xiaoyao-accent); }
 .dark header .main-menu > a.text-base { color: #f8fafc; }
-.dark header .main-menu nav a:hover { background: rgba(56, 189, 248, 0.1); color: #67e8f9; }
+.dark header .main-menu nav a { color: #94a3b8; }
+.dark header .main-menu nav a:hover { background: transparent; color: #67e8f9; }
 /* Blowfish's fixed header reserves 148px by default; keep the nav compact and centered. */
 header > .min-h-\[148px\] { min-height: 3.5rem !important; height: 3.5rem; }
-header > div.fixed { background: rgba(247, 248, 251, 0.92); border-bottom: 1px solid var(--xiaoyao-border); box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035); }
+header > div.fixed { background: #f7f8fb !important; border-bottom: 1px solid var(--xiaoyao-border); box-shadow: none; }
 header > div.fixed > div.relative { min-height: 3.5rem; }
-header .main-menu { min-height: 3.5rem; padding-top: 0.25rem; padding-bottom: 0.25rem; }
-header .main-menu nav { height: 3rem; }
-.dark header > div.fixed { background: rgba(11, 17, 32, 0.92); border-bottom-color: rgba(100, 116, 139, 0.24); box-shadow: 0 4px 18px rgba(2, 6, 23, 0.18); }
+.dark header > div.fixed { background: #0b1120 !important; border-bottom-color: rgba(100, 116, 139, 0.24); box-shadow: none; }
+#menu-blur { display: none !important; }
 
 main { position: relative; }
 main::before { display: none; }
@@ -277,7 +276,7 @@ main::before { display: none; }
 }
 
 @media (max-width: 640px) {
-  header > .min-h-\[148px\] { min-height: 4.5rem !important; }
+  header > .min-h-\[148px\] { min-height: 3.5rem !important; }
   .xiaoyao-hero-card { padding: 1.75rem 0; }
   .xiaoyao-hero-card h1 { font-size: clamp(2.7rem, 14vw, 4.2rem); }
   .xiaoyao-hero-title { margin-top: 1.1rem; font-size: 1.2rem; }
