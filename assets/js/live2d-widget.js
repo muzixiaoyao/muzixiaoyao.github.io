@@ -15,6 +15,37 @@
     document.head.appendChild(element);
   });
 
+  const guardLive2DInputUntilReady = () => {
+    let ready = false;
+    const guardedEvents = ['mousemove', 'mouseout', 'touchmove', 'touchstart', 'touchend'];
+    const blockEvent = (event) => {
+      if (ready) return;
+      if (event.type === 'mousemove' || event.type === 'mouseout' || event.target?.closest?.('#live2d')) {
+        event.stopImmediatePropagation();
+      }
+    };
+
+    guardedEvents.forEach((eventName) => document.addEventListener(eventName, blockEvent, true));
+
+    const release = () => {
+      ready = true;
+      guardedEvents.forEach((eventName) => document.removeEventListener(eventName, blockEvent, true));
+      observer.disconnect();
+      window.clearTimeout(timeout);
+    };
+
+    const observer = new MutationObserver(() => {
+      if (document.getElementById('waifu')?.classList.contains('waifu-active')) release();
+    });
+    observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    const timeout = window.setTimeout(() => {
+      if (!ready) {
+        document.getElementById('waifu')?.remove();
+        release();
+      }
+    }, 15000);
+  };
+
   const boot = async () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (window.innerWidth < 768) return;
@@ -27,6 +58,8 @@
       ]);
 
       if (typeof window.initWidget !== 'function') return;
+
+      guardLive2DInputUntilReady();
 
       if (localStorage.getItem('live2d-config-version') !== 'platelet-1') {
         localStorage.setItem('modelId', '0');
