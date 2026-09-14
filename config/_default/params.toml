@@ -11,7 +11,7 @@ disableTextInHeader = false
 fingerprintAlgorithm = "sha512"
 
 [header]
-  layout = "fixed"
+  layout = "fixed-fill"
 
 [footer]
   showMenu = true
