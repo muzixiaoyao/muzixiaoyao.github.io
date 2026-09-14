@@ -25,12 +25,12 @@ body {
 
 header {
   background-color: #f7f8fb !important;
-  border-bottom: 1px solid var(--xiaoyao-border);
+  border-bottom: 0 !important;
 }
 
 .dark header {
   background-color: #0b1120 !important;
-  border-bottom-color: rgba(100, 116, 139, 0.25);
+  border-bottom: 0 !important;
 }
 
 header .main-menu { min-height: 3.5rem; height: 3.5rem; gap: 1rem; padding: 0; }
@@ -43,9 +43,9 @@ header .main-menu nav a:hover { background: transparent; color: var(--xiaoyao-ac
 .dark header .main-menu nav a:hover { background: transparent; color: #67e8f9; }
 /* Blowfish's fixed header reserves 148px by default; keep the nav compact and centered. */
 header > .min-h-\[148px\] { min-height: 3.5rem !important; height: 3.5rem; }
-header > div.fixed { background: #f7f8fb !important; border-bottom: 1px solid var(--xiaoyao-border); box-shadow: none; }
+header > div.fixed { background: #f7f8fb !important; border-bottom: 0 !important; box-shadow: none; }
 header > div.fixed > div.relative { min-height: 3.5rem; }
-.dark header > div.fixed { background: #0b1120 !important; border-bottom-color: rgba(100, 116, 139, 0.24); box-shadow: none; }
+.dark header > div.fixed { background: #0b1120 !important; border-bottom: 0 !important; box-shadow: none; }
 #menu-blur { display: none !important; }
 
 main { position: relative; }
